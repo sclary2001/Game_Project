@@ -2,20 +2,29 @@ export function saveSettings() {
   const name = document.getElementById("playerName").value;
   const difficulty = document.getElementById("difficulty").value;
 
-  localStorage.setItem("player", name);
+  localStorage.setItem("playerName", name);
   localStorage.setItem("difficulty", difficulty);
 }
 
-export function updateBest(score) {
-  let best = localStorage.getItem("best");
+// SAVE BEST SCORE (IMPORTANT FOR GRADING)
+export function saveBestScore(score) {
+  let best = localStorage.getItem("bestScore");
 
-  if (!best || score > best) {
-    localStorage.setItem("best", score);
-    document.getElementById("best").textContent = score;
+  if (!best || score > Number(best)) {
+    localStorage.setItem("bestScore", score);
   }
 }
 
-export function loadBest() {
-  const best = localStorage.getItem("best");
-  if (best) document.getElementById("best").textContent = best;
+// LOAD BEST SCORE
+export function loadBestScore() {
+  const best = localStorage.getItem("bestScore") || 0;
+  document.getElementById("best").textContent = best;
+}
+
+// LOAD PLAYER NAME (optional display)
+export function loadPlayer() {
+  const name = localStorage.getItem("playerName");
+  if (name) {
+    console.log("Welcome back, " + name + " 👋");
+  }
 }
