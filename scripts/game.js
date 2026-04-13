@@ -1,10 +1,16 @@
-import { updateBest } from "./storage.js";
+import { saveBestScore } from "./storage.js";
 
 let score = 0;
+let gameRunning = false;
 let gameInterval;
 
 export function startGame() {
-  const obstacle = document.getElementById("obstacle");
+  if (gameRunning) return;
+
+  gameRunning = true;
+  score = 0;
+
+  document.getElementById("score").textContent = score;
 
   gameInterval = setInterval(() => {
     score++;
@@ -28,34 +34,41 @@ function moveObstacle() {
   const obstacle = document.getElementById("obstacle");
   let pos = obstacle.offsetLeft;
 
-  if (pos < -20) {
-    obstacle.style.left = "100%";
-  } else {
-    obstacle.style.left = pos - 10 + "px";
-  }
+  obstacle.style.left = (pos < -20 ? 1000 : pos - 10) + "px";
 }
 
 function checkCollision() {
   const player = document.getElementById("player");
   const obstacle = document.getElementById("obstacle");
 
-  const pRect = player.getBoundingClientRect();
-  const oRect = obstacle.getBoundingClientRect();
+  const p = player.getBoundingClientRect();
+  const o = obstacle.getBoundingClientRect();
 
   if (
-    pRect.right > oRect.left &&
-    pRect.left < oRect.right &&
-    pRect.bottom > oRect.top
+    p.right > o.left &&
+    p.left < o.right &&
+    p.bottom > o.top
   ) {
-    clearInterval(gameInterval);
-    updateBest(score);
-    alert("Game Over!");
-    score = 0;
+    gameOver();
   }
+}
+
+function gameOver() {
+  clearInterval(gameInterval);
+  gameRunning = false;
+
+  saveBestScore(score); // ✅ SAVE SCORE HERE
+
+  alert("Game Over! Score: " + score);
+
+  document.getElementById("best").textContent =
+    localStorage.getItem("bestScore");
 }
 
 export function resetGame() {
   clearInterval(gameInterval);
+  gameRunning = false;
+
   score = 0;
   document.getElementById("score").textContent = 0;
 }
