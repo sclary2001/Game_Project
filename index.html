@@ -3,23 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Stick Jump Runner</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="styles/game.css">
 </head>
 
 <body>
 
 <header>
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
     <div class="container-fluid">
-      <span class="navbar-brand">Stick Jump</span>
+      <span class="navbar-brand">🏃 Stick Jump</span>
 
-      <div>
-        <button id="startBtn" class="btn btn-success">Play</button>
-        <button id="resetBtn" class="btn btn-danger">Reset</button>
+      <div class="navbar-nav">
+        <button id="startBtn" class="btn btn-success me-2">Play</button>
+        <button id="resetBtn" class="btn btn-danger me-2">Reset</button>
+
         <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#howModal">
           How to Play
         </button>
@@ -30,46 +36,93 @@
 
 <main class="container text-center mt-4">
 
-  <h1>🏃 Stick Runner</h1>
+  <h1>Stick Jump Runner</h1>
+  <p>Press SPACE or tap to jump over obstacles.</p>
 
+  <!-- Game Area -->
   <div id="gameArea" tabindex="0" aria-live="polite">
-    <div id="player"></div>
-    <div id="obstacle"></div>
+    <div id="player" aria-label="Player character"></div>
+    <div id="obstacle" aria-label="Obstacle"></div>
   </div>
 
+  <!-- Score -->
   <p>Score: <span id="score">0</span></p>
   <p>Best: <span id="best">0</span></p>
 
-  <!-- Settings -->
-  <form id="settingsForm">
-    <input type="text" id="playerName" required placeholder="Name" minlength="2">
+  <!-- Settings Form -->
+  <form id="settingsForm" class="mt-4">
 
-    <select id="difficulty" required>
-      <option value="">Difficulty</option>
-      <option value="easy">Easy</option>
-      <option value="hard">Hard</option>
-    </select>
+    <div class="mb-2">
+      <label for="playerName" class="form-label">Player Name</label>
+      <input 
+        type="text" 
+        id="playerName" 
+        class="form-control"
+        required 
+        minlength="2"
+        placeholder="Enter your name">
+    </div>
 
-    <button class="btn btn-primary mt-2">Save</button>
+    <div class="mb-2">
+      <label for="difficulty" class="form-label">Difficulty</label>
+      <select id="difficulty" class="form-select" required>
+        <option value="">Choose difficulty</option>
+        <option value="easy">Easy</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary mt-2">Save Settings</button>
   </form>
 
 </main>
 
-<footer class="text-center mt-4">
-  <a href="#">Dev Profile</a> |
-  <a href="#">Repo</a>
+<footer class="text-center mt-5 mb-3">
+
+  <p class="small text-muted">
+    ✅ Built with semantic HTML, Bootstrap 5, and accessible design.
+  </p>
+
+  <p>
+    <a href="https://sclary2001.github.io/stick-jump-game/" target="_blank">
+      Dev Profile
+    </a> |
+
+    <a href="https://github.com/sclary2001/stick-jump-game" target="_blank">
+      Game Repo
+    </a> |
+
+    <a href="https://github.com/sclary2001" target="_blank">
+      GitHub Profile
+    </a> |
+
+    <a href="https://validator.w3.org/nu/?doc=https://sclary2001.github.io/stick-jump-game/" target="_blank">
+      Nu Validator
+    </a> |
+
+    <a href="https://wave.webaim.org/report#/https://sclary2001.github.io/stick-jump-game/" target="_blank">
+      WAVE Checker
+    </a>
+  </p>
+
 </footer>
 
 <!-- Modal -->
-<div class="modal fade" id="howModal">
+<div class="modal fade" id="howModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content p-3">
       <h2>How to Play</h2>
-      <p>Press SPACE or tap to jump over obstacles.</p>
+      <p>Press SPACE or tap/click to jump over obstacles. Survive as long as possible!</p>
     </div>
   </div>
 </div>
 
+<!-- Scripts -->
+<script type="module" src="scripts/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
 <script type="module" src="scripts/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
