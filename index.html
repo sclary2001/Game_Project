@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stick Jump Runner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/game.css">
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <span class="navbar-brand">Stick Jump</span>
+
+      <div>
+        <button id="startBtn" class="btn btn-success">Play</button>
+        <button id="resetBtn" class="btn btn-danger">Reset</button>
+        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#howModal">
+          How to Play
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="container text-center mt-4">
+
+  <h1>🏃 Stick Runner</h1>
+
+  <div id="gameArea" tabindex="0" aria-live="polite">
+    <div id="player"></div>
+    <div id="obstacle"></div>
+  </div>
+
+  <p>Score: <span id="score">0</span></p>
+  <p>Best: <span id="best">0</span></p>
+
+  <!-- Settings -->
+  <form id="settingsForm">
+    <input type="text" id="playerName" required placeholder="Name" minlength="2">
+
+    <select id="difficulty" required>
+      <option value="">Difficulty</option>
+      <option value="easy">Easy</option>
+      <option value="hard">Hard</option>
+    </select>
+
+    <button class="btn btn-primary mt-2">Save</button>
+  </form>
+
+</main>
+
+<footer class="text-center mt-4">
+  <a href="#">Dev Profile</a> |
+  <a href="#">Repo</a>
+</footer>
+
+<!-- Modal -->
+<div class="modal fade" id="howModal">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <h2>How to Play</h2>
+      <p>Press SPACE or tap to jump over obstacles.</p>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="scripts/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
