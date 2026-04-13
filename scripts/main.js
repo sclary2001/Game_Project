@@ -1,8 +1,8 @@
 import { startGame, jump, resetGame } from "./game.js";
-import { saveSettings, loadBest } from "./storage.js";
+import { saveSettings, loadBestScore, loadPlayer } from "./storage.js";
 
-document.getElementById("startBtn").onclick = startGame;
-document.getElementById("resetBtn").onclick = resetGame;
+document.getElementById("startBtn").addEventListener("click", startGame);
+document.getElementById("resetBtn").addEventListener("click", resetGame);
 
 document.addEventListener("keydown", (e) => {
   if (e.code === "Space") jump();
@@ -15,11 +15,14 @@ document.getElementById("settingsForm").addEventListener("submit", (e) => {
   saveSettings();
 });
 
-loadBest();
+// LOAD SAVED DATA ON START
+loadBestScore();
+loadPlayer();
 
-// Easter egg
-console.log("👀 Type: godMode()");
+// Easter egg (required rubric feature)
+console.log("👀 Try typing: godMode()");
 
 window.godMode = () => {
-  alert("Infinite jumps activated 😎");
+  document.body.style.background = "#111";
+  alert("God Mode Activated 😎");
 };
