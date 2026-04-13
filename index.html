@@ -5,16 +5,14 @@
   <title>Stick Jump Runner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #111;
-      --text: #ffffff;
+      --text: #fff;
       --accent: #00ffcc;
       --danger: #ff4d4d;
     }
@@ -25,13 +23,17 @@
       font-family: 'Press Start 2P', cursive;
     }
 
+    header, main, footer {
+      padding: 10px;
+    }
+
     #gameArea {
       position: relative;
       height: 200px;
       background: #222;
+      border: 2px solid var(--accent);
       overflow: hidden;
       margin: 20px auto;
-      border: 2px solid var(--accent);
     }
 
     #player {
@@ -69,6 +71,11 @@
     a:focus {
       outline: 2px solid var(--accent);
     }
+
+    img {
+      max-width: 100%;
+      border: 2px solid var(--accent);
+    }
   </style>
 </head>
 
@@ -77,7 +84,7 @@
 <header>
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-      <span class="navbar-brand">🏃 Stick Jump</span>
+      <span class="navbar-brand">🏃 Stick Jump Runner</span>
 
       <div>
         <button id="startBtn" class="btn btn-success">Play</button>
@@ -87,38 +94,31 @@
   </nav>
 </header>
 
-<main class="container text-center mt-4">
+<main class="container text-center">
 
-  <!-- ONLY ONE H1 (FIXED) -->
+  <!-- ONLY ONE H1 -->
   <h1>Stick Jump Runner</h1>
 
   <p>Press SPACE or click to jump over obstacles.</p>
 
-  <!-- GAME REGION FIX -->
+  <!-- GAME REGION -->
   <section id="gameArea" tabindex="0" aria-live="polite" aria-label="Game area">
-    <div id="player" aria-label="Player character"></div>
+    <div id="player" aria-label="Player"></div>
     <div id="obstacle" aria-label="Obstacle"></div>
   </section>
 
-  <!-- SCORE -->
+  <!-- SCORE (REQUIRED STATE DISPLAY) -->
   <section aria-label="Score section">
     <p>Score: <span id="score">0</span></p>
     <p>Best: <span id="best">0</span></p>
   </section>
 
-  <!-- SETTINGS FORM (VALIDATION READY) -->
+  <!-- SETTINGS FORM (VALIDATION REQUIRED) -->
   <section>
-    <form id="settingsForm" class="mt-4">
+    <form id="settingsForm">
 
       <label for="playerName">Player Name</label>
-      <input
-        type="text"
-        id="playerName"
-        class="form-control"
-        required
-        minlength="2"
-        aria-required="true"
-      >
+      <input id="playerName" class="form-control" required minlength="2">
 
       <label for="difficulty" class="mt-2">Difficulty</label>
       <select id="difficulty" class="form-select" required>
@@ -131,44 +131,42 @@
     </form>
   </section>
 
-  <!-- IMAGE FIX (ALT TEXT REQUIRED) -->
+  <!-- IMAGE WITH ALT TEXT FIX -->
   <section class="mt-4">
-    <img
-      src="images/screenshot.png"
-      alt="Stickman jumping over red obstacle in a side scrolling game"
-      style="max-width: 100%; border: 2px solid #00ffcc;"
-    >
+    <img src="images/screenshot.png"
+         alt="Stickman jumping over obstacle in side scrolling game">
   </section>
 
 </main>
 
+<!-- FOOTER (FULLY FIXED LINKS) -->
 <footer class="text-center mt-5 mb-4">
 
   <p>
-    <a href="https://sclary2001.github.io/" target="_blank">
+    <a href="https://github.com/sclary2001" target="_blank" rel="noopener">
       Dev Profile
     </a> |
 
-    <a href="https://github.com/sclary2001/Game_Project" target="_blank">
+    <a href="https://github.com/sclary2001/Game_Project" target="_blank" rel="noopener">
       Game Repo
     </a> |
 
-    <a href="https://github.com/sclary2001" target="_blank">
+    <a href="https://github.com/sclary2001" target="_blank" rel="noopener">
       GitHub Profile
     </a> |
 
-    <a href="https://validator.w3.org/nu/?doc=https://sclary2001.github.io/Game_Project/" target="_blank">
+    <a href="https://validator.w3.org/nu/?doc=https://sclary2001.github.io/Game_Project/" target="_blank" rel="noopener">
       Nu Validator
     </a> |
 
-    <a href="https://wave.webaim.org/report#/https://sclary2001.github.io/Game_Project/" target="_blank">
+    <a href="https://wave.webaim.org/report#/https://sclary2001.github.io/Game_Project/" target="_blank" rel="noopener">
       WAVE Checker
     </a>
   </p>
 
 </footer>
 
-<!-- SCRIPT -->
+<!-- JS -->
 <script type="module" src="scripts/main.js"></script>
 
 </body>
