@@ -11,24 +11,77 @@
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles/game.css">
+  <style>
+    :root {
+      --bg: #111;
+      --text: #ffffff;
+      --accent: #00ffcc;
+      --danger: #ff4d4d;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Press Start 2P', cursive;
+    }
+
+    #gameArea {
+      position: relative;
+      height: 200px;
+      background: #222;
+      overflow: hidden;
+      margin: 20px auto;
+      border: 2px solid var(--accent);
+    }
+
+    #player {
+      position: absolute;
+      bottom: 0;
+      left: 50px;
+      width: 20px;
+      height: 40px;
+      background: white;
+    }
+
+    #obstacle {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 20px;
+      height: 30px;
+      background: var(--danger);
+    }
+
+    .jump {
+      animation: jump 0.5s;
+    }
+
+    @keyframes jump {
+      0% { bottom: 0; }
+      50% { bottom: 100px; }
+      100% { bottom: 0; }
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    a:focus {
+      outline: 2px solid var(--accent);
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <span class="navbar-brand">🏃 Stick Jump</span>
 
-      <div class="navbar-nav">
-        <button id="startBtn" class="btn btn-success me-2">Play</button>
-        <button id="resetBtn" class="btn btn-danger me-2">Reset</button>
-
-        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#howModal">
-          How to Play
-        </button>
+      <div>
+        <button id="startBtn" class="btn btn-success">Play</button>
+        <button id="resetBtn" class="btn btn-danger">Reset</button>
       </div>
     </div>
   </nav>
@@ -36,95 +89,87 @@
 
 <main class="container text-center mt-4">
 
+  <!-- ONLY ONE H1 (FIXED) -->
   <h1>Stick Jump Runner</h1>
-  <p>Press SPACE or tap/click to jump over obstacles.</p>
 
-  <!-- Game Area -->
-  <div id="gameArea" tabindex="0" aria-live="polite">
+  <p>Press SPACE or click to jump over obstacles.</p>
+
+  <!-- GAME REGION FIX -->
+  <section id="gameArea" tabindex="0" aria-live="polite" aria-label="Game area">
     <div id="player" aria-label="Player character"></div>
     <div id="obstacle" aria-label="Obstacle"></div>
-  </div>
+  </section>
 
-  <!-- Score -->
-  <p>Score: <span id="score">0</span></p>
-  <p>Best: <span id="best">0</span></p>
+  <!-- SCORE -->
+  <section aria-label="Score section">
+    <p>Score: <span id="score">0</span></p>
+    <p>Best: <span id="best">0</span></p>
+  </section>
 
-  <!-- Settings Form -->
-  <form id="settingsForm" class="mt-4">
+  <!-- SETTINGS FORM (VALIDATION READY) -->
+  <section>
+    <form id="settingsForm" class="mt-4">
 
-    <div class="mb-2">
-      <label for="playerName" class="form-label">Player Name</label>
-      <input 
-        type="text" 
-        id="playerName" 
+      <label for="playerName">Player Name</label>
+      <input
+        type="text"
+        id="playerName"
         class="form-control"
-        required 
+        required
         minlength="2"
-        placeholder="Enter your name">
-    </div>
+        aria-required="true"
+      >
 
-    <div class="mb-2">
-      <label for="difficulty" class="form-label">Difficulty</label>
+      <label for="difficulty" class="mt-2">Difficulty</label>
       <select id="difficulty" class="form-select" required>
         <option value="">Choose difficulty</option>
         <option value="easy">Easy</option>
         <option value="hard">Hard</option>
       </select>
-    </div>
 
-    <button class="btn btn-primary mt-2">Save Settings</button>
-  </form>
+      <button class="btn btn-primary mt-3">Save Settings</button>
+    </form>
+  </section>
+
+  <!-- IMAGE FIX (ALT TEXT REQUIRED) -->
+  <section class="mt-4">
+    <img
+      src="images/screenshot.png"
+      alt="Stickman jumping over red obstacle in a side scrolling game"
+      style="max-width: 100%; border: 2px solid #00ffcc;"
+    >
+  </section>
 
 </main>
 
-<footer class="text-center mt-5 mb-3">
-
-  <p class="small text-muted">
-    ✅ Built with semantic HTML, Bootstrap 5, and accessible design.
-  </p>
+<footer class="text-center mt-5 mb-4">
 
   <p>
-    <!-- FIXED DEV PROFILE -->
     <a href="https://sclary2001.github.io/" target="_blank">
       Dev Profile
     </a> |
 
-    <!-- FIXED REPO -->
-    <a href="https://github.com/sclary2001/stick-jump-game" target="_blank">
+    <a href="https://github.com/sclary2001/Game_Project" target="_blank">
       Game Repo
     </a> |
 
-    <!-- GITHUB PROFILE -->
     <a href="https://github.com/sclary2001" target="_blank">
       GitHub Profile
     </a> |
 
-    <!-- NU VALIDATOR -->
-    <a href="https://validator.w3.org/nu/?doc=https://sclary2001.github.io/stick-jump-game/" target="_blank">
+    <a href="https://validator.w3.org/nu/?doc=https://sclary2001.github.io/Game_Project/" target="_blank">
       Nu Validator
     </a> |
 
-    <!-- WAVE CHECKER -->
-    <a href="https://wave.webaim.org/report#/https://sclary2001.github.io/stick-jump-game/" target="_blank">
+    <a href="https://wave.webaim.org/report#/https://sclary2001.github.io/Game_Project/" target="_blank">
       WAVE Checker
     </a>
   </p>
 
 </footer>
 
-<!-- Modal -->
-<div class="modal fade" id="howModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content p-3">
-      <h2>How to Play</h2>
-      <p>Press SPACE or tap/click to jump over obstacles. Survive as long as possible!</p>
-    </div>
-  </div>
-</div>
-
-<!-- Scripts -->
+<!-- SCRIPT -->
 <script type="module" src="scripts/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
